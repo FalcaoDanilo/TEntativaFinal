@@ -1,0 +1,134 @@
+<div *ngIf="currentTutorial" class="edit-form">
+  <h4>Tutorial</h4>
+  <form>
+    <div class="form-group">
+      <label for="nome">nome</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nome"
+        [(ngModel)]="currentTutorial.nome"
+        name="nome"
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        [(ngModel)]="currentTutorial.description"
+        name="description"
+      />
+    </div>
+    <div class="form-group">
+      <label for="cep">CEP</label>
+      <input
+        class="form-control"
+        id="cep"
+        required
+        [(ngModel)]="currentTutorial.cep"
+        (input)="consultaCep(currentTutorial.cep)"
+        (blur)="updateCepCaracters(currentTutorial.cep)"
+        name="cep"
+        mask="00000-000"
+        placeholder="Digite o CEP"
+        maxlength="9"
+      />
+      <div *ngIf="CepCaracters" class="alert alert-danger">
+        Tem que ter 8 dígitos
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="rua">Rua</label>
+      <input
+        class="form-control"
+        id="rua"
+        required
+        [(ngModel)]="currentTutorial.rua"
+        name="rua"
+        placeholder="Digite a rua"
+        maxlength="9"
+      />
+    </div>
+    <div class="form-group">
+      <label for="estado">Estado</label>
+      <select class="form-control" id="estado" name="estado" [(ngModel)]="currentTutorial.estado">
+        <option value="" disabled selected hidden>Selecione o estado</option>
+        <option value="AC">AC</option>
+        <option value="AL">AL</option>
+        <option value="AM">AM</option>
+        <option value="AP">AP</option>
+        <option value="BA">BA</option>
+        <option value="CE">CE</option>
+        <option value="DF">DF</option>
+        <option value="ES">ES</option>
+        <option value="GO">GO</option>
+        <option value="MA">MA</option>
+        <option value="MG">MG</option>
+        <option value="MS">MS</option>
+        <option value="MT">MT</option>
+        <option value="PA">PA</option>
+        <option value="PB">PB</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="PR">PR</option>
+        <option value="RJ">RJ</option>
+        <option value="RN">RN</option>
+        <option value="RO">RO</option>
+        <option value="RR">RR</option>
+        <option value="RS">RS</option>
+        <option value="SC">SC</option>
+        <option value="SE">SE</option>
+        <option value="SP">SP</option>
+        <option value="TO">TO</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cidade">Cidade</label>
+      <input
+        class="form-control"
+        id="cidade"
+        required
+        [(ngModel)]="currentTutorial.cidade"
+        name="cidade"
+        placeholder="Digite a cidade"
+        maxlength="50"
+      />
+    </div>
+
+    <div class="form-group">
+      <label><strong>Status:</strong></label>
+      {{ currentTutorial.published ? "Published" : "Pending" }}
+    </div>
+  </form>
+
+  <button
+    class="badge badge-primary mr-2"
+    *ngIf="currentTutorial.published"
+    (click)="updatePublished(false)"
+  >
+    UnPublish
+  </button>
+  <button
+    *ngIf="!currentTutorial.published"
+    class="badge badge-primary mr-2"
+    (click)="updatePublished(true)"
+  >
+    Publicado!
+  </button>
+
+  <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
+    Delete
+  </button>
+
+  <button type="submit" class="badge badge-success" (click)="updateTutorial()">
+    Update
+  </button>
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!currentTutorial">
+  <br />
+  <p>Não foi possivel acessar...</p>
+</div>

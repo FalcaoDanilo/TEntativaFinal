@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "path/to/your/project",
+        "use": "@vercel/static-build",
+        "config": {
+          "buildCommand": "npm run build"
+        }
+      }
+    ]
+  }
