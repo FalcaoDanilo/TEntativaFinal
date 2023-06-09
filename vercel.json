@@ -1,19 +1,10 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "public/**",
-      "use": "@vercel/static"
-    }
+    { "src": "angular.json", "use": "@angular/cli" },
+    { "src": "dist/angular-16-firebase-crud-master/**", "use": "@vercel/static" }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+    { "src": "/(.*)", "dest": "/dist/angular-16-firebase-crud-master/index.html" }
   ]
 }
