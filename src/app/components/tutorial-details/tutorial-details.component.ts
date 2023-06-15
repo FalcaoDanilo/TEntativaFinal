@@ -12,6 +12,7 @@ export class TutorialDetailsComponent implements OnInit {
   @Input() tutorial?: Tutorial;
   @Output() refreshList: EventEmitter<any> = new EventEmitter();
   currentTutorial: Tutorial = {
+    id:'',
     nome: '',
     description: '',
     cep: '',

@@ -21,7 +21,7 @@ export class TutorialsListComponent implements OnInit {
   }
 
   refreshList(): void {
-    // this.currentTutorial = undefined;
+    this.currentTutorial = undefined;
     this.currentIndex = -1;
     this.retrieveTutorials();
   }
