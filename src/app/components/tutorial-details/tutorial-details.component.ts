@@ -65,6 +65,7 @@ export class TutorialDetailsComponent implements OnInit {
   }
 
   deleteTutorial(): void {
+    console.log("Pega??")
     if (this.currentTutorial.id) {
       this.tutorialService.delete(this.currentTutorial.id)
         .then(() => {
