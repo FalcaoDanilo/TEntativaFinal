@@ -29,6 +29,7 @@ export class TutorialService {
   }
 
   delete(key: string): Promise<void> {
+    console.log("chegou2")
     return this.tutorialsRef.remove(key);
   }
 
